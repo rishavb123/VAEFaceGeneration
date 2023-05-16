@@ -1,0 +1,6 @@
+mkdir "gray"
+mkdir "color"
+mkdir "gray/epoch_imgs"
+mkdir "color/models"
+mkdir "gray/epoch_imgs"
+mkdir "color/models"
