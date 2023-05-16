@@ -1,0 +1,1 @@
+DATA_PATH = f"C:/Data/Ashlynn"
