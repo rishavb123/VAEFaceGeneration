@@ -98,7 +98,7 @@ def create_numpy_array(name="gray", save_name="dataset"):
     for fname in tqdm.tqdm(fnames):
         fpath = f"{raw_path}/{fname}"
         img = cv2.imread(fpath)
-        f_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        f_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) / 255
         imgs.append(f_img)
 
     print("Converting to numpy array . . .")
