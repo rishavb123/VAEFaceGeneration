@@ -99,6 +99,7 @@ def create_numpy_array(name="gray", save_name="dataset"):
         fpath = f"{raw_path}/{fname}"
         img = cv2.imread(fpath)
         f_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) / 255
+        f_img = np.reshape(f_img, (*f_img.shape, 1)).astype("float32")
         imgs.append(f_img)
 
     print("Converting to numpy array . . .")
@@ -109,7 +110,31 @@ def create_numpy_array(name="gray", save_name="dataset"):
 
     return imgs
 
-def load_dataset(save_name="dataset"):
+def create_color_numpy_array(name="resized", save_name="color_dataset"):
+    raw_path = f"{DATA_PATH}/{name}"
+    save_path = f"{DATA_PATH}/{save_name}.npy"
+
+    fnames = list(os.listdir(raw_path))
+
+    print("Loading into numpy array")
+
+    imgs = []
+
+    for fname in tqdm.tqdm(fnames):
+        fpath = f"{raw_path}/{fname}"
+        img = cv2.imread(fpath)
+        f_img = (img / 255).astype("float32")
+        imgs.append(f_img)
+
+    print("Converting to numpy array . . .")
+
+    imgs = np.array(imgs)
+
+    np.save(save_path, imgs)
+
+    return imgs
+
+def load_dataset(save_name="dataset"): 
     save_path = f"{DATA_PATH}/{save_name}.npy"
     return np.load(save_path)
 
@@ -118,8 +143,9 @@ def main():
     # resize_faces()
     # gray_faces()
     # create_numpy_array()
+    create_color_numpy_array()
 
-    imgs = load_dataset()
+    imgs = load_dataset(save_name="color_dataset")
     print(imgs.shape)
 
     pass
