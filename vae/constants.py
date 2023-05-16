@@ -1,4 +1,4 @@
-DATA_PATH = f"C:/Data/Ashlynn"
+DATA_PATH = f"C:/Data/VAE_DATA"
 
 BATCH_SIZE = 32
 
