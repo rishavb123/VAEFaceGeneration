@@ -9,11 +9,11 @@ import cv2
 
 gray = False
 latent_dim = 100
-load_eps = False
+load_eps = True
 row, col = 4, 8
 img_size = 256
 gray_divider = 15
-color_divider = 10
+color_divider = 5
 # Set row, col to 1, 1 to enable saving
 
 
